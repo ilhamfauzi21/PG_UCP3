@@ -1,30 +1,34 @@
 using UnityEngine;
 
-public class SpawnObsacle : MonoBehaviour
+public class SpawnObstacles : MonoBehaviour
 {
-
     public GameObject obstacle;
-    public float maxX;
-    public float minX;
-    public float maxY;
-    public float minY;
-    public float timeBetweenSpawn;
-    private float spawnTime;
 
-    // Update is called once per frame
+    public float minY = -2f;
+    public float maxY = 2f;
+    public float timeBetweenSpawn = 1f;
+
+    private float spawnTimer;
+
     void Update()
     {
-        if (Time.time > spawnTime)
+        if (Time.time >= spawnTimer)
         {
             Spawn();
-            spawnTime = Time.time + timeBetweenSpawn;
+            spawnTimer = Time.time + timeBetweenSpawn;
         }
     }
+
     void Spawn()
     {
-        float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
 
-        Instantiate(obstacle, transform.position + new Vector3(randomX, randomY, 0), transform.rotation);
+        float spawnX = Camera.main.ViewportToWorldPoint(
+            new Vector3(1, 0, 0)
+        ).x + 1.5f;
+
+        Vector3 spawnPosition = new Vector3(spawnX, randomY, 0f);
+
+        Instantiate(obstacle, spawnPosition, Quaternion.identity);
     }
 }

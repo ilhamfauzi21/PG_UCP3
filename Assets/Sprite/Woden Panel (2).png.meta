@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 1e3382641597ed8459f28d754af89eba
+guid: 1cf9e2684eb2c5e41ad38ff0050e8e7d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7485807285609543462
-    second: Mask Button_0
+      213: 6192483753919163439
+    second: Woden Panel (2)_0
+  - first:
+      213: 8711624390488336734
+    second: Woden Panel (2)_1
+  - first:
+      213: 5491240539911109074
+    second: Woden Panel (2)_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mask Button_0
+      name: Woden Panel (2)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 7
-        width: 830
-        height: 387
+        x: 8
+        y: 93
+        width: 482
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ad8463c6fe11d1890800000000000000
-      internalID: -7485807285609543462
+      spriteID: f2caabd3a2f10f550800000000000000
+      internalID: 6192483753919163439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Woden Panel (2)_1
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 387
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e59afab1a38e5e870800000000000000
+      internalID: 8711624390488336734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Woden Panel (2)_2
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 309
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d930ad5d2ec43c40800000000000000
+      internalID: 5491240539911109074
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mask Button_0: -7485807285609543462
+      Woden Panel (2)_0: 6192483753919163439
+      Woden Panel (2)_1: 8711624390488336734
+      Woden Panel (2)_2: 5491240539911109074
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
