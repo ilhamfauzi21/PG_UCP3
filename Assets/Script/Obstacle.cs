@@ -2,23 +2,24 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    private GameOver gameOver;
+    private GameObject player;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameOver = FindFirstObjectByType<GameOver>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Border"))
+        if (collision.tag == "Border")
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
-        else if (collision.CompareTag("Player"))
+
+        else if (collision.tag == "Player")
         {
-            gameOver.ShowGameOver();
-            collision.gameObject.SetActive(false); // OPTIONAL
+            Destroy(player.gameObject);
         }
     }
 }

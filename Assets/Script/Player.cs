@@ -12,22 +12,12 @@ public class Player : MonoBehaviour
     private AudioSource moveAudio;
     private Rigidbody2D rb;
     private Vector2 playerDirection;
-
     private bool isGameOver = false;
-    private bool canTrigger = false; // ⛔ kunci trigger di awal
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         moveAudio = GetComponent<AudioSource>();
-
-        // Buka trigger setelah physics stabil
-        Invoke(nameof(EnableTrigger), 0.3f);
-    }
-
-    void EnableTrigger()
-    {
-        canTrigger = true;
     }
 
     void Update()
@@ -47,8 +37,7 @@ public class Player : MonoBehaviour
         if (Keyboard.current.wKey.wasPressedThisFrame ||
             Keyboard.current.sKey.wasPressedThisFrame)
         {
-            if (moveSound != null)
-                moveAudio.PlayOneShot(moveSound);
+            moveAudio.PlayOneShot(moveSound);
         }
     }
 
@@ -65,33 +54,27 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // ⛔ BLOK TOTAL SAAT AWAL GAME
-        if (!canTrigger || isGameOver) return;
-
-        if (other.CompareTag("Obstacle"))
+        if (other.CompareTag("Obstacle") && !isGameOver)
         {
             isGameOver = true;
 
-            // 🔊 crash sound (PASTI hanya saat nabrak)
-            if (hitSound != null && Camera.main != null)
-            {
-                AudioSource.PlayClipAtPoint(
-                    hitSound,
-                    Camera.main.transform.position,
-                    1f
-                );
-            }
+            // 🔊 GAME OVER SOUND (PASTI BUNYI)
+            AudioSource.PlayClipAtPoint(
+                hitSound,
+                Camera.main.transform.position,
+                1f
+            );
 
             rb.linearVelocity = Vector2.zero;
 
             FindFirstObjectByType<GameOver>().ShowGameOver();
 
-            // sembunyikan player
-            SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
-            if (sr) sr.enabled = false;
+            // sembunyikan player (aman)
+            if (GetComponentInChildren<SpriteRenderer>())
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
 
-            Collider2D col = GetComponent<Collider2D>();
-            if (col) col.enabled = false;
+            if (GetComponent<Collider2D>())
+                GetComponent<Collider2D>().enabled = false;
         }
     }
 }
